@@ -4,221 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max Strategy Agency | Global Partnership</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @keyframes float {
+        @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
         }
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.15; }
-            50% { opacity: 0.3; }
-        }
-        .animate-float-1 { animation: float 6s ease-in-out infinite; }
-        .animate-float-2 { animation: float 8s ease-in-out infinite 1s; }
-        .animate-float-3 { animation: float 7s ease-in-out infinite 2s; }
-        .bg-watermark {
-            background-image: url('monlogo.jpg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 65%;
-            opacity: 0.07;
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
+        .animate-float-1 { animation: floatSlow 6s ease-in-out infinite; }
+        .animate-float-2 { animation: floatSlow 8s ease-in-out infinite 1s; }
+        .animate-float-3 { animation: floatSlow 7s ease-in-out infinite 2s; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen relative overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center justify-between p-4 md:p-8 relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-    <!-- Logo en arrière-plan (Filigrane géant) -->
-    <div class="bg-watermark"></div>
+    <!-- Éléments d'animation réseaux sociaux en arrière-plan -->
+    <div class="absolute top-12 left-8 text-indigo-500/20 text-6xl animate-float-1 pointer-events-none"><i class="fa-brands fa-tiktok"></i></div>
+    <div class="absolute top-32 right-12 text-purple-500/20 text-5xl animate-float-2 pointer-events-none"><i class="fa-brands fa-instagram"></i></div>
+    <div class="absolute bottom-20 left-16 text-pink-500/20 text-5xl animate-float-3 pointer-events-none"><i class="fa-solid fa-video"></i></div>
 
-    <!-- Éléments décoratifs et animations réseaux sociaux en arrière-plan -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-20 left-10 text-pink-500/20 text-6xl animate-float-1"><i class="fa-brands fa-tiktok"></i></div>
-        <div class="absolute top-40 right-16 text-blue-500/20 text-5xl animate-float-2"><i class="fa-solid fa-bolt"></i></div>
-        <div class="absolute bottom-32 left-1/4 text-indigo-500/20 text-6xl animate-float-3"><i class="fa-solid fa-video"></i></div>
-        <div class="absolute top-1/2 right-10 text-purple-500/20 text-5xl animate-float-1"><i class="fa-brands fa-instagram"></i></div>
+    <!-- Sélecteur de langue -->
+    <div class="w-full max-w-3xl flex justify-end mb-2 relative z-20">
+        <div class="flex items-center gap-2 bg-white/90 backdrop-blur-md border border-slate-200 rounded-full px-4 py-1.5 shadow-sm">
+            <span class="text-xs text-slate-500 font-medium">Langue :</span>
+            <button onclick="setLanguage('fr')" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer">FR</button>
+            <span class="text-slate-300">|</span>
+            <button onclick="setLanguage('en')" class="text-xs font-medium text-slate-500 hover:text-indigo-800 transition-colors cursor-pointer">EN</button>
+            <span class="text-slate-300">|</span>
+            <button onclick="setLanguage('bg')" class="text-xs font-medium text-slate-500 hover:text-indigo-800 transition-colors cursor-pointer">BG</button>
+        </div>
     </div>
 
-    <!-- Barre supérieure : Langues -->
-    <header class="relative z-10 max-w-6xl mx-auto px-6 py-4 flex justify-between items-center border-b border-slate-200">
-        <div class="flex items-center space-x-3">
-            <img src="monlogo.jpg" alt="Logo" class="w-10 h-10 rounded-full object-cover border border-indigo-500/40 shadow-sm">
-            <span class="font-bold text-slate-900 tracking-wide text-sm sm:text-base">MAX STRATEGY AGENCY</span>
-        </div>
-        <div class="flex space-x-2 text-xs font-semibold">
-            <button onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1 rounded-full bg-indigo-600 text-white shadow-sm transition">FR</button>
-            <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 transition">EN</button>
-            <button onclick="setLanguage('bg')" id="btn-bg" class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 transition">BG</button>
-        </div>
-    </header>
-
-    <!-- Contenu Principal -->
-    <main class="relative z-10 max-w-4xl mx-auto px-6 py-12">
-
-        <!-- En-tête / Hero Central -->
-        <div class="text-center mb-12">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold uppercase tracking-wider shadow-sm">
-                <i class="fa-solid fa-earth-europe mr-1"></i> Global Partnership & Influence Agency
+    <!-- Carte Principale -->
+    <main class="w-full max-w-2xl bg-white border border-slate-200 rounded-3xl shadow-xl p-6 md:p-10 space-y-8 relative z-10 my-auto">
+        
+        <!-- En-tête / Logo de l'agence -->
+        <div class="flex flex-col items-center text-center space-y-4">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                <img src="logo.jpg" alt="Logo Agence" class="relative w-24 h-24 rounded-full object-cover border-2 border-slate-200 shadow-md">
             </div>
-            <h1 id="main-title" class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                Monétise ton TikTok avec les plus grandes marques
-            </h1>
-            <p id="main-subtitle" class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
-                Rejoins un réseau d'élite de créateurs. Campagnes exclusives, accompagnement sur-mesure et revenus garantis.
-            </p>
+            <span class="px-4 py-1 bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-semibold rounded-full uppercase tracking-widest shadow-inner">Max Strategy Agency - Global Partnership</span>
+            <h1 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 leading-tight">Monétise ton <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">TikTok</span> avec les plus grandes marques</h1>
+            <p class="text-slate-600 text-sm md:text-base leading-relaxed">Rejoins notre réseau de créateurs d'élite ou lance une campagne pour ta marque. Participe à des projets exclusifs.</p>
         </div>
 
-        <!-- Grille Principale : Formulaire + Chat/Questions -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Sélecteur de profil (Créateur / Marque) -->
+        <div class="pt-2 border-t border-slate-100">
+            <div class="grid grid-cols-2 gap-3 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+                <button type="button" onclick="switchForm('creator')" id="btnCreator" class="py-3 px-4 rounded-xl font-semibold text-sm bg-indigo-600 text-white transition-all shadow-md cursor-pointer">Espace Créateur</button>
+                <button type="button" onclick="switchForm('brand')" id="btnBrand" class="py-3 px-4 rounded-xl font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer">Espace Marque / Pro</button>
+            </div>
+        </div>
 
-            <!-- Espace Créateur : Formulaire de candidature -->
-            <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 p-8">
-                <div class="flex items-center space-x-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Espace Créateur</h2>
-                        <p class="text-xs text-slate-500">Candidature rapide et sécurisée</p>
-                    </div>
-                </div>
-
-                <form action="mailto:maxstrategyagency.bg@hotmail.com" method="POST" enctype="text/plain" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nom / Pseudo *</label>
-                        <input type="text" name="Nom" required placeholder="Ex: @votre_tiktok" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Lien de ton profil TikTok & Abonnés *</label>
-                        <input type="text" name="TikTok" required placeholder="Ex: tiktok.com/@moncompte (5k abonnés)" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Adresse Email *</label>
-                        <input type="email" name="Email" required placeholder="ton@email.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Numéro WhatsApp / Téléphone *</label>
-                        <input type="tel" name="WhatsApp" required placeholder="+33 6..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50/50">
-                    </div>
-
-                    <div class="pt-2">
-                        <button type="submit" class="w-full py-3 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md transition duration-200 flex items-center justify-center space-x-2">
-                            <span>Valider mon inscription</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </button>
-                    </div>
-                </form>
+        <!-- FORMULAIRE CRÉATEUR -->
+        <form id="formCreator" class="space-y-4" onsubmit="handleSuccess(event)">
+            <div class="bg-indigo-50/40 border border-indigo-100 p-4 rounded-2xl mb-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-1 flex items-center gap-2"><i class="fa-solid fa-circle-info"></i> Candidature & Renseignements</h3>
+                <p class="text-xs text-slate-600">Remplis ce formulaire pour postuler ou poser tes questions directement à notre équipe.</p>
             </div>
 
-            <!-- Espace Questions & Chat Direct -->
-            <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 p-8 flex flex-col h-full">
-                <div class="flex items-center space-x-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
-                        <i class="fa-solid fa-comments"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Pose ta question</h2>
-                        <p class="text-xs text-slate-500">Réponse instantanée de l'agence</p>
-                    </div>
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Nom complet ou Nom d'artiste / Pseudo *</label>
+                <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all text-sm" placeholder="Ex: Jean Dupont">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Lien de ton profil TikTok & Nombre d'abonnés *</label>
+                <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all text-sm" placeholder="Ex: @mon_tiktok (ex: 5000 abonnés)">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Adresse Email *</label>
+                    <input type="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all text-sm" placeholder="ton@email.com">
                 </div>
-
-                <!-- Zone de discussion -->
-                <div id="chat-messages" class="flex-1 bg-slate-50 rounded-xl p-4 h-64 overflow-y-auto space-y-3 mb-4 border border-slate-100 text-sm">
-                    <div class="bg-indigo-50 text-indigo-900 p-3 rounded-xl rounded-tl-sm max-w-[85%] shadow-sm">
-                        👋 Bonjour ! Bienvenue chez Max Strategy Agency. As-tu une question sur nos campagnes ou les conditions d'intégration ? Pose-la ici !
-                    </div>
-                </div>
-
-                <!-- Input de question -->
-                <div class="flex space-x-2">
-                    <input type="text" id="user-question" placeholder="Écris ta question ici..." class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50/50" onkeypress="if(event.key === 'Enter') sendQuestion()">
-                    <button onclick="sendQuestion()" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold shadow-md transition">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Numéro WhatsApp / Téléphone *</label>
+                    <input type="tel" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all text-sm" placeholder="+359 ...">
                 </div>
             </div>
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Pose ta question ou décris ta demande *</label>
+                <textarea rows="3" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all text-sm" placeholder="Ex: Bonjour, j'aimerais savoir comment fonctionnent les campagnes..."></textarea>
+            </div>
+            <div class="pt-2">
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-indigo-600/20 cursor-pointer text-sm tracking-wide">Envoyer ma demande</button>
+            </div>
+        </form>
 
-        </div>
+        <!-- FORMULAIRE MARQUE / PROFESSIONNEL -->
+        <form id="formBrand" class="space-y-4 hidden" onsubmit="handleSuccess(event)">
+            <div class="bg-purple-50/40 border border-purple-100 p-4 rounded-2xl mb-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-purple-700 mb-1 flex items-center gap-2"><i class="fa-solid fa-briefcase"></i> Espace Marques & Entreprises</h3>
+                <p class="text-xs text-slate-600">Demandez votre devis sur mesure ou des informations sur nos campagnes d'influence.</p>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Nom de l'Entreprise / Marque / Label *</label>
+                <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:bg-white transition-all text-sm" placeholder="Ex: MaSuperMarque SARL">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Nom du Responsable / Contact *</label>
+                <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:bg-white transition-all text-sm" placeholder="Ex: Jean Martin">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Email Professionnel *</label>
+                    <input type="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:bg-white transition-all text-sm" placeholder="contact@entreprise.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Téléphone / WhatsApp *</label>
+                    <input type="tel" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:bg-white transition-all text-sm" placeholder="+359 ...">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Type de Campagne / Demande de Devis *</label>
+                <textarea rows="4" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-purple-600 focus:bg-white transition-all text-sm" placeholder="Décrivez vos besoins (ex: lancement de produit, volume de créateurs souhaité)..."></textarea>
+            </div>
+            <div class="pt-2">
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-purple-600/20 cursor-pointer text-sm tracking-wide">Demander un devis / Envoyer</button>
+            </div>
+        </form>
 
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 text-center py-8 text-xs text-slate-500 border-t border-slate-200 mt-16">
-        <p>&copy; 2026 Max Strategy Agency. Tous droits réservés. | Contact: maxstrategyagency.bg@hotmail.com</p>
+    <footer class="w-full max-w-2xl text-center py-6 text-xs text-slate-400 border-t border-slate-200/60 mt-8 relative z-10">
+        <p>© 2026 Max Strategy Agency. All rights reserved. | Contact: maxstrategyagency.bg@hotmail.com</p>
     </footer>
 
-    <!-- Script JavaScript pour Langues et Chat -->
+    <!-- Script JavaScript -->
     <script>
-        // Gestion des langues
-        const translations = {
-            fr: {
-                title: "Monétise ton TikTok avec les plus grandes marques",
-                subtitle: "Rejoins un réseau d'élite de créateurs. Campagnes exclusives, accompagnement sur-mesure et revenus garantis."
-            },
-            en: {
-                title: "Monetize your TikTok with top global brands",
-                subtitle: "Join an elite network of creators. Exclusive campaigns, tailored support, and guaranteed revenue."
-            },
-            bg: {
-                title: "Монетизирайте своя TikTok с водещи световни марки",
-                subtitle: "Присъединете се към елитен мрежов кръг от креатори. Ексклузивни кампании и гарантирани приходи."
-            }
-        };
+        function switchForm(type) {
+            const formCreator = document.getElementById('formCreator');
+            const formBrand = document.getElementById('formBrand');
+            const btnCreator = document.getElementById('btnCreator');
+            const btnBrand = document.getElementById('btnBrand');
 
-        function setLanguage(lang) {
-            document.getElementById('main-title').innerText = translations[lang].title;
-            document.getElementById('main-subtitle').innerText = translations[lang].subtitle;
-            
-            // Mise à jour boutons
-            ['fr', 'en', 'bg'].forEach(l => {
-                const btn = document.getElementById(`btn-${l}`);
-                if(l === lang) {
-                    btn.className = "px-3 py-1 rounded-full bg-indigo-600 text-white shadow-sm transition";
-                } else {
-                    btn.className = "px-3 py-1 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
-                }
-            });
+            if (type === 'creator') {
+                formCreator.classList.remove('hidden');
+                formBrand.classList.add('hidden');
+                btnCreator.className = "py-3 px-4 rounded-xl font-semibold text-sm bg-indigo-600 text-white transition-all shadow-md cursor-pointer";
+                btnBrand.className = "py-3 px-4 rounded-xl font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer";
+            } else {
+                formBrand.classList.remove('hidden');
+                formCreator.classList.add('hidden');
+                btnBrand.className = "py-3 px-4 rounded-xl font-semibold text-sm bg-purple-600 text-white transition-all shadow-md cursor-pointer";
+                btnCreator.className = "py-3 px-4 rounded-xl font-semibold text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer";
+            }
         }
 
-        // Système de chat interactif intelligent
-        function sendQuestion() {
-            const input = document.getElementById('user-question');
-            const chatBox = document.getElementById('chat-messages');
-            const text = input.value.trim();
-            if(!text) return;
+        function handleSuccess(event) {
+            event.preventDefault();
+            alert("Demande envoyée avec succès ! Notre équipe vous recontactera rapidement.");
+            event.target.reset();
+        }
 
-            // Message utilisateur
-            const userMsg = document.createElement('div');
-            userMsg.className = "bg-purple-600 text-white p-3 rounded-xl rounded-tr-sm max-w-[85%] ml-auto shadow-sm text-right";
-            userMsg.innerText = text;
-            chatBox.appendChild(userMsg);
-            input.value = '';
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            // Réponse automatique de l'agence
-            setTimeout(() => {
-                let reply = "Merci pour ton message ! Un agent de Max Strategy Agency va l'analyser et te recontacter rapidement par WhatsApp ou email.";
-                const lower = text.toLowerCase();
-                
-                if(lower.includes('gratuit') || lower.includes('commission') || lower.includes('combien')) {
-                    reply = "L'accompagnement avec notre agence est entièrement gratuit pour les créateurs ! Nous nous rémunérons en commission sur les partenariats de marques négociés pour toi.";
-                } else if(lower.includes('abonné') || lower.includes('requis') || lower.includes('combien d\'abonnés')) {
-                    reply = "Nous recherchons des créateurs actifs disposant d'un minimum de 1 000 abonnés sur TikTok.";
-                } else if(lower.includes('contact') || lower.includes('email') || lower.includes('whatsapp')) {
-                    reply = "Tu peux nous joindre directement par e-mail à maxstrategyagency.bg@hotmail.com ou via le formulaire de candidature juste à gauche !";
-                }
-
-                const botMsg = document.createElement('div');
-                botMsg.className = "bg-indigo-50 text-indigo-900 p-3 rounded-xl rounded-tl-sm max-w-[85%] shadow-sm";
-                botMsg.innerText = reply;
-                chatBox.appendChild(botMsg);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 600);
+        function setLanguage(lang) {
+            // Option multilingue
         }
     </script>
 </body>
