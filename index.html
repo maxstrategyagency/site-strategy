@@ -24,12 +24,10 @@
 </head>
 <body class="bg-[#020617] text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
 
-    <!-- Éléments d'arrière-plan lumineux (Effet Agency Pro) -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-pink-600/10 blur-[160px] rounded-full pointer-events-none animate-glow"></div>
     <div class="absolute top-[40%] -left-40 w-[500px] h-[500px] bg-indigo-500/10 blur-[140px] rounded-full pointer-events-none"></div>
     <div class="absolute bottom-10 -right-40 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-    <!-- Navigation / Header -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#020617]/80 border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -37,20 +35,20 @@
                 <span class="font-black text-lg tracking-wider bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">MAX STRATEGY</span>
             </div>
             
-            <div class="flex items-center gap-4">
-                <!-- Sélecteur de langue -->
-                <div class="flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-full px-3.5 py-1.5 shadow-inner">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-full px-3 py-1.5 shadow-inner">
                     <span id="langLabel" class="text-xs text-slate-400 font-medium">Langue :</span>
                     <button onclick="setLanguage('fr')" class="text-xs font-bold text-indigo-400 hover:text-white transition-colors cursor-pointer">FR</button>
                     <span class="text-slate-700">|</span>
                     <button onclick="setLanguage('en')" class="text-xs font-medium text-slate-400 hover:text-white transition-colors cursor-pointer">EN</button>
+                    <span class="text-slate-700">|</span>
+                    <button onclick="setLanguage('bg')" class="text-xs font-medium text-slate-400 hover:text-white transition-colors cursor-pointer">BG</button>
                 </div>
-                <a href="#register" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-indigo-600/30 cursor-pointer">Rejoindre l'agence</a>
+                <a href="#register" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-indigo-600/30 cursor-pointer">Rejoindre</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="relative pt-16 pb-12 md:pt-24 md:pb-20 px-4 max-w-5xl mx-auto text-center space-y-8 z-10">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold uppercase tracking-widest shadow-inner animate-float">
             <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
@@ -65,28 +63,25 @@
             Propulse ta carrière d'influenceur ou sature ton marché avec nos campagnes de marketing d'influence d'élite en Europe.
         </p>
 
-        <!-- Statistiques Clés -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6 max-w-3xl mx-auto">
             <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
                 <div class="text-2xl sm:text-3xl font-black text-indigo-400">+50M</div>
-                <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Portée cumulée</div>
+                <div id="stat1" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Portée cumulée</div>
             </div>
             <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
                 <div class="text-2xl sm:text-3xl font-black text-purple-400">100%</div>
-                <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Campagnes exclusives</div>
+                <div id="stat2" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Campagnes exclusives</div>
             </div>
             <div class="col-span-2 md:col-span-1 bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
                 <div class="text-2xl sm:text-3xl font-black text-pink-400">24/7</div>
-                <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Management dédié</div>
+                <div id="stat3" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Management dédié</div>
             </div>
         </div>
     </section>
 
-    <!-- Form Section (Le Cœur du Site) -->
     <section id="register" class="py-12 px-4 max-w-xl mx-auto w-full relative z-10 mb-24">
         <div class="bg-slate-900/80 backdrop-blur-2xl border border-slate-800/90 rounded-3xl shadow-2xl p-6 sm:p-10 space-y-8 relative overflow-hidden">
             
-            <!-- Effet de bordure lumineuse interne -->
             <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
 
             <div class="text-center space-y-2">
@@ -94,13 +89,11 @@
                 <p id="formSubtitle" class="text-slate-400 text-sm">Sélectionnez votre profil pour initialiser votre dossier.</p>
             </div>
 
-            <!-- Boutons de bascule Créateur / Marque -->
             <div class="grid grid-cols-2 gap-3 p-1.5 bg-slate-950/80 border border-slate-800 rounded-2xl">
                 <button type="button" onclick="switchForm('creator')" id="btnCreator" class="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-indigo-600 text-white transition-all shadow-lg shadow-indigo-600/30 cursor-pointer uppercase tracking-wider">Créateur</button>
                 <button type="button" onclick="switchForm('brand')" id="btnBrand" class="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-slate-400 hover:text-white transition-all cursor-pointer uppercase tracking-wider">Marque</button>
             </div>
 
-            <!-- FORMULAIRE CRÉATEUR -->
             <form id="formCreator" class="space-y-5" onsubmit="handleSuccess(event)">
                 <div>
                     <label id="labelName" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom complet ou Nom d'artiste / Pseudo *</label>
@@ -108,7 +101,7 @@
                 </div>
                 <div>
                     <label id="labelTiktok" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Lien de ton profil TikTok & Nombre d'abonnés *</label>
-                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: @mon_tiktok (ex: 5000 abonnés)">
+                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: @mon_tiktok">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -121,67 +114,46 @@
                     </div>
                 </div>
 
-                <!-- Bloc Contrat Créateur -->
-                <div class="pt-4 border-t border-slate-800/80">
-                    <h3 id="contractHeading" class="text-xs font-black uppercase tracking-widest mb-3 text-indigo-400">Contrat-Cadre de Collaboration & Exclusivité</h3>
-                    <div id="contractText" class="bg-slate-950/90 border border-slate-800 rounded-xl p-4 h-48 overflow-y-auto text-xs text-slate-300 space-y-3 mb-4 scrollbar-thin">
-                        <p><strong>ARTICLE 1 : OBJET</strong> Le présent contrat définit les conditions dans lesquelles l'Agence propose au Créateur des missions de promotion (marques, labels) sur les réseaux sociaux.</p>
-                        <p><strong>ARTICLE 2 : ENGAGEMENTS</strong> Le Créateur s'engage à respecter les briefs et à publier les contenus aux dates et heures exigées par l'Agence. Chaque vidéo validée sera rémunérée selon le tarif convenu.</p>
-                        <p><strong>ARTICLE 3 : EXCLUSIVITÉ</strong> Le Créateur confère à l'Agence l'exclusivité pour la gestion de ses partenariats publicitaires et campagnes de type "effet de masse" avec des marques ou labels musicaux. Il s'interdit de participer à des campagnes concurrentes similaires non validées par l'Agence.</p>
-                        <p><strong>ARTICLE 4 : DURÉE & RÉSILIATION</strong> Contrat à durée indéterminée, résiliable à tout moment par notification écrite sous réserve des campagnes en cours.</p>
-                        <p><strong>ARTICLE 5 : RÉMUNÉRATION</strong> Les reversements et commissions perçus dans le cadre des campagnes et du réseau TikTok LIVE sont versés selon les fréquences convenues entre les parties, déduction faite des frais de gestion de l'agence.</p>
-                        <p><strong>ARTICLE 6 : PROPRIÉTÉ INTELLECTUELLE</strong> Le Créateur concède à l'Agence le droit d'utiliser son image, son nom de profil et les extraits de ses diffusions à des fins promotionnelles pour le compte des campagnes de l'agence.</p>
-                        <p><strong>ARTICLE 7 : LOI APPLICABLE</strong> Le présent contrat est régi par les lois en vigueur. Tout litige relatif à son interprétation ou son exécution relèvera des juridictions compétentes.</p>
-                    </div>
-                    <div class="flex items-start gap-3 bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/60">
-                        <input type="checkbox" id="contractCheck" required class="mt-0.5 w-4 h-4 rounded border-slate-700 bg-slate-900 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
-                        <label id="labelCheckbox" for="contractCheck" class="text-xs text-slate-300 cursor-pointer leading-relaxed">J'ai lu et j'accepte sans réserve le <span class="text-indigo-400 font-medium">Contrat-Cadre de collaboration</span> et la <span class="text-indigo-400 font-medium">clause d'exclusivité</span> de l'agence. *</label>
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-black uppercase tracking-wider py-4 rounded-xl transition-all shadow-xl shadow-indigo-600/30 cursor-pointer text-sm">Valider mon inscription et signer le contrat</button>
+                <div class="pt-3">
+                    <button type="submit" id="submitBtnCreator" class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white font-black uppercase tracking-wider py-4 rounded-xl transition-all shadow-xl shadow-indigo-600/30 cursor-pointer text-sm">Envoyer ma candidature</button>
                 </div>
             </form>
 
-            <!-- FORMULAIRE MARQUE (Caché par défaut) -->
             <form id="formBrand" class="space-y-5 hidden" onsubmit="handleSuccess(event)">
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom de l'Entreprise / Marque *</label>
+                    <label id="labelBrandName" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom de l'Entreprise / Marque *</label>
                     <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: MaSuperMarque SARL">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom du Responsable / Contact *</label>
+                    <label id="labelBrandContact" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom du Responsable / Contact *</label>
                     <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: Jean Martin">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Professionnel *</label>
+                        <label id="labelBrandEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Professionnel *</label>
                         <input type="email" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="contact@entreprise.com">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Téléphone / WhatsApp *</label>
-                        <input type="tel" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+33 ... ou +359 ...">
+                        <label id="labelBrandPhone" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Téléphone / WhatsApp *</label>
+                        <input type="tel" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+359 ...">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Type de Campagne / Besoins en Influence *</label>
-                    <textarea rows="4" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Décrivez vos objectifs (ex: lancement de produit, saturation TikTok, placement de produits avec des créateurs...)"></textarea>
+                    <label id="labelBrandMsg" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Type de Campagne / Besoins en Influence *</label>
+                    <textarea rows="4" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Décrivez vos objectifs..."></textarea>
                 </div>
-                <div class="pt-2">
-                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black uppercase tracking-wider py-4 rounded-xl transition-all shadow-xl shadow-purple-600/30 cursor-pointer text-sm">Envoyer la demande de partenariat</button>
+                <div class="pt-3">
+                    <button type="submit" id="submitBtnBrand" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black uppercase tracking-wider py-4 rounded-xl transition-all shadow-xl shadow-purple-600/30 cursor-pointer text-sm">Envoyer la demande</button>
                 </div>
             </form>
 
         </div>
     </section>
 
-    <!-- Footer Pro -->
     <footer class="border-t border-slate-800/80 bg-slate-950/60 py-8 text-center text-xs text-slate-500 relative z-10">
         <p>© 2026 Max Strategy Agency. Tous droits réservés. Global Influence Network.</p>
     </footer>
 
-    <!-- Script de gestion et traduction -->
     <script>
         function switchForm(type) {
             const formCreator = document.getElementById('formCreator');
@@ -204,7 +176,7 @@
 
         function handleSuccess(event) {
             event.preventDefault();
-            alert("Inscription / Demande validée avec succès ! Bienvenue dans l'agence.");
+            alert("Envoyé avec succès !");
             event.target.reset();
         }
 
@@ -215,15 +187,24 @@
                 badgeText: "Global Influence & TikTok Network Agency",
                 mainTitle: "Monétise ton <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> avec les plus grandes marques",
                 mainSubtitle: "Propulse ta carrière d'influenceur ou sature ton marché avec nos campagnes de marketing d'influence d'élite en Europe.",
+                stat1: "Portée cumulée",
+                stat2: "Campagnes exclusives",
+                stat3: "Management dédié",
                 formTitle: "Espace d'Inscription & Partenariat",
                 formSubtitle: "Sélectionnez votre profil pour initialiser votre dossier.",
+                btnCreator: "Créateur",
+                btnBrand: "Marque",
                 labelName: "Nom complet ou Nom d'artiste / Pseudo *",
                 labelTiktok: "Lien de ton profil TikTok & Nombre d'abonnés *",
                 labelEmail: "Adresse Email *",
                 labelPhone: "Numéro WhatsApp / Téléphone *",
-                contractHeading: "Contrat-Cadre de Collaboration & Exclusivité",
-                labelCheckbox: "J'ai lu et j'accepte sans réserve le <span class='text-indigo-400 font-medium'>Contrat-Cadre de collaboration</span> et la <span class='text-indigo-400 font-medium'>clause d'exclusivité</span> de l'agence. *",
-                submitBtn: "Valider mon inscription et signer le contrat"
+                submitBtnCreator: "Envoyer ma candidature",
+                labelBrandName: "Nom de l'Entreprise / Marque *",
+                labelBrandContact: "Nom du Responsable / Contact *",
+                labelBrandEmail: "Email Professionnel *",
+                labelBrandPhone: "Téléphone / WhatsApp *",
+                labelBrandMsg: "Type de Campagne / Besoins en Influence *",
+                submitBtnBrand: "Envoyer la demande"
             },
             en: {
                 pageTitle: "Max Strategy Agency | Global Influence & TikTok Network",
@@ -231,15 +212,49 @@
                 badgeText: "Global Influence & TikTok Network Agency",
                 mainTitle: "Monetize your <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> with top brands",
                 mainSubtitle: "Boost your influencer career or saturate your market with our elite European influencer marketing campaigns.",
+                stat1: "Total Reach",
+                stat2: "Exclusive Campaigns",
+                stat3: "Dedicated Management",
                 formTitle: "Registration & Partnership Space",
                 formSubtitle: "Select your profile to initialize your application.",
+                btnCreator: "Creator",
+                btnBrand: "Brand",
                 labelName: "Full Name or Artist Name / Handle *",
                 labelTiktok: "Your TikTok Profile Link & Follower Count *",
                 labelEmail: "Email Address *",
                 labelPhone: "WhatsApp / Phone Number *",
-                contractHeading: "Framework Collaboration Agreement & Exclusivity",
-                labelCheckbox: "I have read and unreservedly accept the <span class='text-indigo-400 font-medium'>framework collaboration agreement</span> and the <span class='text-indigo-400 font-medium'>exclusivity clause</span> of the agency. *",
-                submitBtn: "Validate my registration and sign the contract"
+                submitBtnCreator: "Submit Application",
+                labelBrandName: "Company / Brand Name *",
+                labelBrandContact: "Manager / Contact Name *",
+                labelBrandEmail: "Professional Email *",
+                labelBrandPhone: "Phone / WhatsApp *",
+                labelBrandMsg: "Campaign Type / Influence Needs *",
+                submitBtnBrand: "Submit Request"
+            },
+            bg: {
+                pageTitle: "Max Strategy Agency | Global Influence & TikTok Network",
+                langLabel: "Език:",
+                badgeText: "Global Influence & TikTok Network Agency",
+                mainTitle: "Монетизирай своя <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> с топ брандове",
+                mainSubtitle: "Ускори своята инфлуенсър кариера с нашите елитни маркетингови кампании в Европа.",
+                stat1: "Общ обхват",
+                stat2: "Ексклузивни кампании",
+                stat3: "Мениджмънт 24/7",
+                formTitle: "Регистрация и Партньорство",
+                formSubtitle: "Изберете вашия профил, за да започнете.",
+                btnCreator: "Създател",
+                btnBrand: "Бранд",
+                labelName: "Имена или Псевдоним *",
+                labelTiktok: "Линк към TikTok профил и последователи *",
+                labelEmail: "Имейл адрес *",
+                labelPhone: "WhatsApp / Телефон номер *",
+                submitBtnCreator: "Изпрати кандидатурата",
+                labelBrandName: "Име на фирма / Бранд *",
+                labelBrandContact: "Лице за контакт *",
+                labelBrandEmail: "Служебен имейл *",
+                labelBrandPhone: "Телефон / WhatsApp *",
+                labelBrandMsg: "Тип кампания / Цели *",
+                submitBtnBrand: "Изпрати заявката"
             }
         };
 
@@ -250,15 +265,24 @@
             document.getElementById('badgeText').innerText = t.badgeText;
             document.getElementById('mainTitle').innerHTML = t.mainTitle;
             document.getElementById('mainSubtitle').innerText = t.mainSubtitle;
+            document.getElementById('stat1').innerText = t.stat1;
+            document.getElementById('stat2').innerText = t.stat2;
+            document.getElementById('stat3').innerText = t.stat3;
             document.getElementById('formTitle').innerText = t.formTitle;
             document.getElementById('formSubtitle').innerText = t.formSubtitle;
+            document.getElementById('btnCreator').innerText = t.btnCreator;
+            document.getElementById('btnBrand').innerText = t.btnBrand;
             document.getElementById('labelName').innerText = t.labelName;
             document.getElementById('labelTiktok').innerText = t.labelTiktok;
             document.getElementById('labelEmail').innerText = t.labelEmail;
             document.getElementById('labelPhone').innerText = t.labelPhone;
-            document.getElementById('contractHeading').innerText = t.contractHeading;
-            document.getElementById('labelCheckbox').innerHTML = t.labelCheckbox;
-            document.getElementById('submitBtn').innerText = t.submitBtn;
+            document.getElementById('submitBtnCreator').innerText = t.submitBtnCreator;
+            document.getElementById('labelBrandName').innerText = t.labelBrandName;
+            document.getElementById('labelBrandContact').innerText = t.labelBrandContact;
+            document.getElementById('labelBrandEmail').innerText = t.labelBrandEmail;
+            document.getElementById('labelBrandPhone').innerText = t.labelBrandPhone;
+            document.getElementById('labelBrandMsg').innerText = t.labelBrandMsg;
+            document.getElementById('submitBtnBrand').innerText = t.submitBtnBrand;
         }
     </script>
 </body>
