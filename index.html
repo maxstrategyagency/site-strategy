@@ -8,35 +8,57 @@
     <style>
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-15px) scale(1.02); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(20px) scale(0.95); }
         }
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.15); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .animate-float {
-            animation: floatSlow 7s ease-in-out infinite;
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .animate-float-rev {
+            animation: floatReverse 8s ease-in-out infinite;
         }
         .animate-glow {
-            animation: pulseGlow 6s ease-in-out infinite;
+            animation: pulseGlow 5s ease-in-out infinite;
+        }
+        .animated-gradient-bg {
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
         }
     </style>
 </head>
 <body class="bg-[#020617] text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
 
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-pink-600/10 blur-[160px] rounded-full pointer-events-none animate-glow"></div>
-    <div class="absolute top-[40%] -left-40 w-[500px] h-[500px] bg-indigo-500/10 blur-[140px] rounded-full pointer-events-none"></div>
-    <div class="absolute bottom-10 -right-40 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none"></div>
+    <!-- Formes géométriques et orbes lumineux animés en arrière-plan -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-tr from-indigo-600/25 via-purple-600/20 to-pink-600/15 blur-[150px] rounded-full pointer-events-none animate-glow"></div>
+    <div class="absolute top-[30%] -left-32 w-[450px] h-[450px] bg-indigo-500/15 blur-[130px] rounded-full pointer-events-none animate-float"></div>
+    <div class="absolute bottom-[20%] -right-32 w-[550px] h-[550px] bg-purple-600/15 blur-[140px] rounded-full pointer-events-none animate-float-rev"></div>
 
+    <!-- Navigation / Header -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#020617]/80 border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="logo.jpg" alt="Logo" class="w-11 h-11 rounded-full object-cover border border-indigo-500/40 shadow-lg shadow-indigo-500/20">
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full blur opacity-75 animate-pulse"></div>
+                    <img src="logo.jpg" alt="Logo" class="relative w-11 h-11 rounded-full object-cover border border-indigo-500/50 shadow-xl">
+                </div>
                 <span class="font-black text-lg tracking-wider bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">MAX STRATEGY</span>
             </div>
             
             <div class="flex items-center gap-3">
-                <div class="flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-full px-3 py-1.5 shadow-inner">
+                <!-- Sélecteur de langue (FR, EN, BG) -->
+                <div class="flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-full px-3.5 py-1.5 shadow-inner">
                     <span id="langLabel" class="text-xs text-slate-400 font-medium">Langue :</span>
                     <button onclick="setLanguage('fr')" class="text-xs font-bold text-indigo-400 hover:text-white transition-colors cursor-pointer">FR</button>
                     <span class="text-slate-700">|</span>
@@ -44,41 +66,44 @@
                     <span class="text-slate-700">|</span>
                     <button onclick="setLanguage('bg')" class="text-xs font-medium text-slate-400 hover:text-white transition-colors cursor-pointer">BG</button>
                 </div>
-                <a href="#register" class="hidden sm:inline-block bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-indigo-600/30 cursor-pointer">Rejoindre</a>
+                <a href="#register" class="hidden sm:inline-block bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-lg shadow-indigo-600/30 cursor-pointer">Rejoindre</a>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="relative pt-16 pb-12 md:pt-24 md:pb-20 px-4 max-w-5xl mx-auto text-center space-y-8 z-10">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold uppercase tracking-widest shadow-inner animate-float">
-            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
             <span id="badgeText">Global Influence & TikTok Network Agency</span>
         </div>
 
         <h1 id="mainTitle" class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
-            Monétise ton <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500">TikTok</span> avec les plus grandes marques
+            Monétise ton <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 animated-gradient-bg">TikTok</span> avec les plus grandes marques
         </h1>
 
         <p id="mainSubtitle" class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Propulse ta carrière d'influenceur ou sature ton marché avec nos campagnes de marketing d'influence d'élite en Europe.
         </p>
 
+        <!-- Statistiques Clés avec effet lumineux au survol -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6 max-w-3xl mx-auto">
-            <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
+            <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-indigo-500/50 p-5 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl">
                 <div class="text-2xl sm:text-3xl font-black text-indigo-400">+50M</div>
                 <div id="stat1" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Portée cumulée</div>
             </div>
-            <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
+            <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-purple-500/50 p-5 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl">
                 <div class="text-2xl sm:text-3xl font-black text-purple-400">100%</div>
                 <div id="stat2" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Campagnes exclusives</div>
             </div>
-            <div class="col-span-2 md:col-span-1 bg-slate-900/60 backdrop-blur-md border border-slate-800 p-4 rounded-2xl">
+            <div class="col-span-2 md:col-span-1 bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-pink-500/50 p-5 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl">
                 <div class="text-2xl sm:text-3xl font-black text-pink-400">24/7</div>
                 <div id="stat3" class="text-xs text-slate-400 uppercase tracking-wider mt-1">Management dédié</div>
             </div>
         </div>
     </section>
 
+    <!-- Form Section (Relié directement à ton e-mail) -->
     <section id="register" class="py-12 px-4 max-w-xl mx-auto w-full relative z-10 mb-24">
         <div class="bg-slate-900/80 backdrop-blur-2xl border border-slate-800/90 rounded-3xl shadow-2xl p-6 sm:p-10 space-y-8 relative overflow-hidden">
             
@@ -89,28 +114,35 @@
                 <p id="formSubtitle" class="text-slate-400 text-sm">Sélectionnez votre profil pour initialiser votre dossier.</p>
             </div>
 
+            <!-- Boutons de bascule -->
             <div class="grid grid-cols-2 gap-3 p-1.5 bg-slate-950/80 border border-slate-800 rounded-2xl">
                 <button type="button" onclick="switchForm('creator')" id="btnCreator" class="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-indigo-600 text-white transition-all shadow-lg shadow-indigo-600/30 cursor-pointer uppercase tracking-wider">Créateur</button>
                 <button type="button" onclick="switchForm('brand')" id="btnBrand" class="py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-slate-400 hover:text-white transition-all cursor-pointer uppercase tracking-wider">Marque</button>
             </div>
 
-            <form id="formCreator" class="space-y-5" onsubmit="handleSuccess(event)">
+            <!-- FORMULAIRE CRÉATEUR (Envoi direct par e-mail à maxstrategyagency.bg@hotmail.com) -->
+            <form id="formCreator" class="space-y-5" action="https://formsubmit.co/maxstrategyagency.bg@hotmail.com" method="POST">
+                <!-- Paramètres cachés pour FormSubmit -->
+                <input type="hidden" name="_subject" value="🚀 Nouvelle candidature Créateur - Max Strategy Agency">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
                 <div>
                     <label id="labelName" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom complet ou Nom d'artiste / Pseudo *</label>
-                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: Jean Dupont">
+                    <input type="text" name="Nom_Createur" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: Jean Dupont">
                 </div>
                 <div>
                     <label id="labelTiktok" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Lien de ton profil TikTok & Nombre d'abonnés *</label>
-                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: @mon_tiktok">
+                    <input type="text" name="Profil_TikTok_et_Abonnes" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: @mon_tiktok (ex: 5000 abonnés)">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label id="labelEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Adresse Email *</label>
-                        <input type="email" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="ton@email.com">
+                        <input type="email" name="Email" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="ton@email.com">
                     </div>
                     <div>
                         <label id="labelPhone" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Numéro WhatsApp / Téléphone *</label>
-                        <input type="tel" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+359 ...">
+                        <input type="tel" name="Telephone_WhatsApp" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+359 ...">
                     </div>
                 </div>
 
@@ -119,28 +151,34 @@
                 </div>
             </form>
 
-            <form id="formBrand" class="space-y-5 hidden" onsubmit="handleSuccess(event)">
+            <!-- FORMULAIRE MARQUE (Envoi direct par e-mail à maxstrategyagency.bg@hotmail.com) -->
+            <form id="formBrand" class="space-y-5 hidden" action="https://formsubmit.co/maxstrategyagency.bg@hotmail.com" method="POST">
+                <!-- Paramètres cachés pour FormSubmit -->
+                <input type="hidden" name="_subject" value="🏢 Nouvelle demande de Marque - Max Strategy Agency">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
                 <div>
                     <label id="labelBrandName" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom de l'Entreprise / Marque *</label>
-                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: MaSuperMarque SARL">
+                    <input type="text" name="Nom_Entreprise_Marque" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: MaSuperMarque SARL">
                 </div>
                 <div>
                     <label id="labelBrandContact" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Nom du Responsable / Contact *</label>
-                    <input type="text" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: Jean Martin">
+                    <input type="text" name="Nom_Responsable" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Ex: Jean Martin">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label id="labelBrandEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Email Professionnel *</label>
-                        <input type="email" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="contact@entreprise.com">
+                        <input type="email" name="Email_Pro" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="contact@entreprise.com">
                     </div>
                     <div>
                         <label id="labelBrandPhone" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Téléphone / WhatsApp *</label>
-                        <input type="tel" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+359 ...">
+                        <input type="tel" name="Telephone_WhatsApp_Marque" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="+359 ...">
                     </div>
                 </div>
                 <div>
                     <label id="labelBrandMsg" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Type de Campagne / Besoins en Influence *</label>
-                    <textarea rows="4" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Décrivez vos objectifs..."></textarea>
+                    <textarea rows="4" name="Besoins_Campagne" required class="w-full bg-slate-950/90 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-sm placeholder:text-slate-600" placeholder="Décrivez vos objectifs..."></textarea>
                 </div>
                 <div class="pt-3">
                     <button type="submit" id="submitBtnBrand" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black uppercase tracking-wider py-4 rounded-xl transition-all shadow-xl shadow-purple-600/30 cursor-pointer text-sm">Envoyer la demande</button>
@@ -150,10 +188,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="border-t border-slate-800/80 bg-slate-950/60 py-8 text-center text-xs text-slate-500 relative z-10">
-        <p>© 2026 Max Strategy Agency. Tous droits réservés. Global Influence Network.</p>
+        <p>© 2026 Max Strategy Agency. Tous droits réservés. Global Influence Network. | Contact: maxstrategyagency.bg@hotmail.com</p>
     </footer>
 
+    <!-- Script multilingue FR / EN / BG -->
     <script>
         function switchForm(type) {
             const formCreator = document.getElementById('formCreator');
@@ -174,18 +214,12 @@
             }
         }
 
-        function handleSuccess(event) {
-            event.preventDefault();
-            alert("Envoyé avec succès !");
-            event.target.reset();
-        }
-
         const translations = {
             fr: {
                 pageTitle: "Max Strategy Agency | Global Influence & TikTok Network",
                 langLabel: "Langue :",
                 badgeText: "Global Influence & TikTok Network Agency",
-                mainTitle: "Monétise ton <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> avec les plus grandes marques",
+                mainTitle: "Monétise ton <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 animated-gradient-bg'>TikTok</span> avec les plus grandes marques",
                 mainSubtitle: "Propulse ta carrière d'influenceur ou sature ton marché avec nos campagnes de marketing d'influence d'élite en Europe.",
                 stat1: "Portée cumulée",
                 stat2: "Campagnes exclusives",
@@ -210,7 +244,7 @@
                 pageTitle: "Max Strategy Agency | Global Influence & TikTok Network",
                 langLabel: "Language:",
                 badgeText: "Global Influence & TikTok Network Agency",
-                mainTitle: "Monetize your <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> with top brands",
+                mainTitle: "Monetize your <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 animated-gradient-bg'>TikTok</span> with top brands",
                 mainSubtitle: "Boost your influencer career or saturate your market with our elite European influencer marketing campaigns.",
                 stat1: "Total Reach",
                 stat2: "Exclusive Campaigns",
@@ -235,7 +269,7 @@
                 pageTitle: "Max Strategy Agency | Global Influence & TikTok Network",
                 langLabel: "Език:",
                 badgeText: "Global Influence & TikTok Network Agency",
-                mainTitle: "Монетизирай своя <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500'>TikTok</span> с топ брандове",
+                mainTitle: "Монетизирай своя <span class='text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 animated-gradient-bg'>TikTok</span> с топ брандове",
                 mainSubtitle: "Ускори своята инфлуенсър кариера с нашите елитни маркетингови кампании в Европа.",
                 stat1: "Общ обхват",
                 stat2: "Ексклузивни кампании",
